@@ -31,8 +31,7 @@ import os
 from streaming_availability import StreamingAvailability
 
 client = StreamingAvailability(
-    # This is the default and can be omitted
-    rapidapi_key=os.environ.get("X_RAPIDAPI_KEY"),
+    rapidapi_key=os.environ.get("X_RAPIDAPI_KEY"),  # This is the default and can be omitted
 )
 
 country = client.countries.list()
@@ -53,8 +52,7 @@ import asyncio
 from streaming_availability import AsyncStreamingAvailability
 
 client = AsyncStreamingAvailability(
-    # This is the default and can be omitted
-    rapidapi_key=os.environ.get("X_RAPIDAPI_KEY"),
+    rapidapi_key=os.environ.get("X_RAPIDAPI_KEY"),  # This is the default and can be omitted
 )
 
 
