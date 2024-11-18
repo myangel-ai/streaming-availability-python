@@ -81,9 +81,9 @@ class TestShows:
     def test_method_search_filters_with_all_params(self, client: StreamingAvailability) -> None:
         show = client.shows.search_filters(
             country="country",
-            catalogs=["string", "string", "string"],
+            catalogs=["string"],
             cursor="cursor",
-            genres=["string", "string", "string"],
+            genres=["string"],
             genres_relation="and",
             keyword="keyword",
             order_by="original_title",
@@ -275,9 +275,9 @@ class TestAsyncShows:
     async def test_method_search_filters_with_all_params(self, async_client: AsyncStreamingAvailability) -> None:
         show = await async_client.shows.search_filters(
             country="country",
-            catalogs=["string", "string", "string"],
+            catalogs=["string"],
             cursor="cursor",
-            genres=["string", "string", "string"],
+            genres=["string"],
             genres_relation="and",
             keyword="keyword",
             order_by="original_title",
