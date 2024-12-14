@@ -8,7 +8,7 @@ from typing_extensions import Self, override
 
 import httpx
 
-from . import _exceptions
+from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,7 +24,6 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
-from .resources import shows, genres, changes, countries
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, StreamingAvailabilityError
 from ._base_client import (
@@ -38,6 +37,7 @@ __all__ = [
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
+    "resources",
     "StreamingAvailability",
     "AsyncStreamingAvailability",
     "Client",
@@ -46,10 +46,10 @@ __all__ = [
 
 
 class StreamingAvailability(SyncAPIClient):
-    countries: countries.CountriesResource
-    genres: genres.GenresResource
-    shows: shows.ShowsResource
-    changes: changes.ChangesResource
+    countries: resources.CountriesResource
+    genres: resources.GenresResource
+    shows: resources.ShowsResource
+    changes: resources.ChangesResource
     with_raw_response: StreamingAvailabilityWithRawResponse
     with_streaming_response: StreamingAvailabilityWithStreamedResponse
 
@@ -107,10 +107,10 @@ class StreamingAvailability(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.countries = countries.CountriesResource(self)
-        self.genres = genres.GenresResource(self)
-        self.shows = shows.ShowsResource(self)
-        self.changes = changes.ChangesResource(self)
+        self.countries = resources.CountriesResource(self)
+        self.genres = resources.GenresResource(self)
+        self.shows = resources.ShowsResource(self)
+        self.changes = resources.ChangesResource(self)
         self.with_raw_response = StreamingAvailabilityWithRawResponse(self)
         self.with_streaming_response = StreamingAvailabilityWithStreamedResponse(self)
 
@@ -220,10 +220,10 @@ class StreamingAvailability(SyncAPIClient):
 
 
 class AsyncStreamingAvailability(AsyncAPIClient):
-    countries: countries.AsyncCountriesResource
-    genres: genres.AsyncGenresResource
-    shows: shows.AsyncShowsResource
-    changes: changes.AsyncChangesResource
+    countries: resources.AsyncCountriesResource
+    genres: resources.AsyncGenresResource
+    shows: resources.AsyncShowsResource
+    changes: resources.AsyncChangesResource
     with_raw_response: AsyncStreamingAvailabilityWithRawResponse
     with_streaming_response: AsyncStreamingAvailabilityWithStreamedResponse
 
@@ -281,10 +281,10 @@ class AsyncStreamingAvailability(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.countries = countries.AsyncCountriesResource(self)
-        self.genres = genres.AsyncGenresResource(self)
-        self.shows = shows.AsyncShowsResource(self)
-        self.changes = changes.AsyncChangesResource(self)
+        self.countries = resources.AsyncCountriesResource(self)
+        self.genres = resources.AsyncGenresResource(self)
+        self.shows = resources.AsyncShowsResource(self)
+        self.changes = resources.AsyncChangesResource(self)
         self.with_raw_response = AsyncStreamingAvailabilityWithRawResponse(self)
         self.with_streaming_response = AsyncStreamingAvailabilityWithStreamedResponse(self)
 
@@ -395,34 +395,34 @@ class AsyncStreamingAvailability(AsyncAPIClient):
 
 class StreamingAvailabilityWithRawResponse:
     def __init__(self, client: StreamingAvailability) -> None:
-        self.countries = countries.CountriesResourceWithRawResponse(client.countries)
-        self.genres = genres.GenresResourceWithRawResponse(client.genres)
-        self.shows = shows.ShowsResourceWithRawResponse(client.shows)
-        self.changes = changes.ChangesResourceWithRawResponse(client.changes)
+        self.countries = resources.CountriesResourceWithRawResponse(client.countries)
+        self.genres = resources.GenresResourceWithRawResponse(client.genres)
+        self.shows = resources.ShowsResourceWithRawResponse(client.shows)
+        self.changes = resources.ChangesResourceWithRawResponse(client.changes)
 
 
 class AsyncStreamingAvailabilityWithRawResponse:
     def __init__(self, client: AsyncStreamingAvailability) -> None:
-        self.countries = countries.AsyncCountriesResourceWithRawResponse(client.countries)
-        self.genres = genres.AsyncGenresResourceWithRawResponse(client.genres)
-        self.shows = shows.AsyncShowsResourceWithRawResponse(client.shows)
-        self.changes = changes.AsyncChangesResourceWithRawResponse(client.changes)
+        self.countries = resources.AsyncCountriesResourceWithRawResponse(client.countries)
+        self.genres = resources.AsyncGenresResourceWithRawResponse(client.genres)
+        self.shows = resources.AsyncShowsResourceWithRawResponse(client.shows)
+        self.changes = resources.AsyncChangesResourceWithRawResponse(client.changes)
 
 
 class StreamingAvailabilityWithStreamedResponse:
     def __init__(self, client: StreamingAvailability) -> None:
-        self.countries = countries.CountriesResourceWithStreamingResponse(client.countries)
-        self.genres = genres.GenresResourceWithStreamingResponse(client.genres)
-        self.shows = shows.ShowsResourceWithStreamingResponse(client.shows)
-        self.changes = changes.ChangesResourceWithStreamingResponse(client.changes)
+        self.countries = resources.CountriesResourceWithStreamingResponse(client.countries)
+        self.genres = resources.GenresResourceWithStreamingResponse(client.genres)
+        self.shows = resources.ShowsResourceWithStreamingResponse(client.shows)
+        self.changes = resources.ChangesResourceWithStreamingResponse(client.changes)
 
 
 class AsyncStreamingAvailabilityWithStreamedResponse:
     def __init__(self, client: AsyncStreamingAvailability) -> None:
-        self.countries = countries.AsyncCountriesResourceWithStreamingResponse(client.countries)
-        self.genres = genres.AsyncGenresResourceWithStreamingResponse(client.genres)
-        self.shows = shows.AsyncShowsResourceWithStreamingResponse(client.shows)
-        self.changes = changes.AsyncChangesResourceWithStreamingResponse(client.changes)
+        self.countries = resources.AsyncCountriesResourceWithStreamingResponse(client.countries)
+        self.genres = resources.AsyncGenresResourceWithStreamingResponse(client.genres)
+        self.shows = resources.AsyncShowsResourceWithStreamingResponse(client.shows)
+        self.changes = resources.AsyncChangesResourceWithStreamingResponse(client.changes)
 
 
 Client = StreamingAvailability
